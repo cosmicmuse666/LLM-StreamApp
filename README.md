@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PowerLearn - AI Chat Application
+
+PowerLearn is a web application built with Next.js that demonstrates how to integrate with the OpenAI API to create an interactive chat experience. It includes examples of both standard (full response) and streaming chat functionalities.
+
+## Features
+
+- **Standard Chat**: Send a message and receive a complete response from the AI.
+- **Streaming Chat**: Receive the AI's response token-by-token for a real-time, "typing" effect.
+- **Modern Tech Stack**: Built with the Next.js App Router, React Server Components, and styled with Tailwind CSS.
+- **Robust API Routes**: Clear separation of concerns with dedicated API routes for chat and streaming.
 
 ## Getting Started
 
-First, run the development server:
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Node.js (v18.17 or later)
+- A package manager like `npm`, `yarn`, `pnpm`, or `bun`.
+- An OpenAI API key.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Installation & Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/chaiaurcode.git
+    cd chaiaurcode
+    ```
 
-## Learn More
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+3.  **Set up environment variables:**
+    Create a file named `.env.local` in the root of your project and add your OpenAI API key:
+    ```
+    # .env.local
+    OPENAI_API_KEY="your-openai-api-key-here"
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open http://localhost:3000 with your browser to see the result. You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-## Deploy on Vercel
+## How It Works
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+-   **Frontend (`app/page.js`):** A client component that manages state for the user's message and the AI's response. It contains two primary functions, `handleChat` and `handleStreamChat`, which make `fetch` requests to the backend API routes.
+-   **Standard API (`app/api/chat/route.ts`):** This route receives the user's message, calls the OpenAI Chat Completions API, awaits the full response, and sends it back to the frontend as a single JSON object.
+-   **Streaming API (`app/api/stream/route.js`):** This route also calls the OpenAI API but with the `stream: true` option. It pipes the resulting `ReadableStream` from OpenAI directly to the client as Server-Sent Events (SSE), allowing the frontend to display the response as it's generated.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project uses `next/font` to automatically optimize and load Geist, a font family for Vercel.
+
