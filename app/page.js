@@ -274,7 +274,7 @@ export default function Home() {
         {showNotes && (
           <div className="mt-20 fade-in">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-semibold text">My Notes</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-center">My Notes</h2>
               <button
                 onClick={handleAddNote}
                 // className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-black font-semibold rounded-lg hover:bg-amber-600 active:bg-amber-700 transition-colors duration-200 text-sm shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-400"
@@ -312,6 +312,11 @@ export default function Home() {
           </div>
         )}
       </div>
+       <footer className="mt-16 pb-8 text-center">
+          <p className="text-gray-500">
+            Powered by Agentic AI  •  Built for learners  •  Designed for success
+          </p>
+        </footer>
     </div>
   );
 }
