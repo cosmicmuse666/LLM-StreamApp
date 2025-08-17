@@ -1,6 +1,7 @@
-# PowerLearn - Your Agentic learning mate!
+# PowerLearn - Where Curiosity Meets Intelligence
 
-PowerLearn is a web application built with Next.js that demonstrates how to integrate with the OpenAI API to create an interactive chat experience. It includes examples of both standard (full response) and streaming chat functionalities.
+PowerLearn is your Agentic learning mate!
+
 
 ## Features
 
